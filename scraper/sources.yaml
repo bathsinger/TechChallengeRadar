@@ -1,0 +1,66 @@
+# ---------------------------------------------------------------------------
+# Sources for the Tech Challenge Radar.
+# Two kinds of entries:
+#
+#  1) rss   -> a real RSS/Atom feed we read as-is (most reliable, no key needed)
+#  2) gnews -> a Google News RSS search query (free, no key, broad discovery
+#              across the whole web — this is what covers DARPA/NASA/ESA/EIC/
+#              XPRIZE/HeroX/etc. announcements even when they don't have a
+#              clean official feed, or when a new agency shows up that we
+#              haven't hard-coded yet)
+#
+# Feel free to add/remove entries. Broken feeds are skipped with a warning,
+# they never crash the whole run.
+# ---------------------------------------------------------------------------
+
+rss_sources:
+  - name: "DARPA – R&D Opportunities"
+    url: "https://www.darpa.mil/rss/opportunities.xml"
+    region: "US / global"
+
+  - name: "DARPA – News"
+    url: "https://www.darpa.mil/rss.xml"
+    region: "US / global"
+
+  # Add more official feeds here as you find them, e.g.:
+  # - name: "ESA Open Calls"
+  #   url: "https://www.esa.int/rssfeed/Our_Activities"
+  #   region: "Europe"
+  # - name: "HeroX blog"
+  #   url: "https://www.herox.com/blog/feed"
+  #   region: "global"
+
+gnews_queries:
+  # Big-name agencies / programmes explicitly mentioned by the user
+  - "DARPA challenge prize"
+  - "NASA challenge prize competition"
+  - "ESA challenge competition prize"
+  - "XPRIZE competition"
+  - "Horizon Europe innovation challenge prize"
+  - "EIC Horizon Europe prize challenge"
+  - "Eurostars Eureka innovation challenge"
+  - "HeroX prize challenge"
+  - "Innocentive challenge"
+  - "challenge.gov prize competition"
+
+  # Topic-driven discovery (robotics / hardware / automation / space / etc.)
+  - "robotics competition prize money"
+  - "hardware startup competition prize"
+  - "autonomous systems challenge competition"
+  - "engineering innovation prize competition"
+  - "sensors technology competition prize"
+  - "manufacturing innovation challenge prize"
+  - "space technology challenge competition prize"
+  - "medtech medical device competition prize"
+  - "3D printing competition prize"
+  - "drone competition prize money"
+  - "AI hardware challenge prize"
+
+# Optional: raw EU Funding & Tenders Portal search API (best effort — the EC
+# changes this endpoint's exact contract occasionally; if it breaks it is
+# simply skipped, nothing else depends on it).
+eu_portal:
+  enabled: true
+  text_queries:
+    - "prize"
+    - "innovation challenge"

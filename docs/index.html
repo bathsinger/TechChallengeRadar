@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tech Challenge Radar — prize challenges for makers &amp; small teams</title>
+<meta name="description" content="A daily-updated scan for technical prize challenges and competitions (DARPA, NASA, ESA, XPRIZE, Horizon Europe and more) that individuals, teams and startups can actually enter.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%23080b09%22 stroke=%22%237cffb2%22 stroke-width=%224%22/><circle cx=%2250%22 cy=%2250%22 r=%226%22 fill=%22%237cffb2%22/></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to results</a>
+
+<div class="topbar">
+  <div><span class="status-dot" aria-hidden="true"></span>TECH CHALLENGE RADAR — live scan</div>
+  <div id="last-updated">last sweep: —</div>
+</div>
+
+<header class="hero">
+  <div>
+    <span class="eyebrow">Daily automated scan · free &amp; open source</span>
+    <h1>Find the <span class="accent">next challenge</span><br>worth building for.</h1>
+    <p class="lede">
+      Every day this page rescans DARPA, NASA, ESA, XPRIZE, Horizon Europe/EIC and
+      general news for open technical prize challenges — robotics, hardware,
+      automation, autonomous systems, sensors, manufacturing, space, medicine,
+      3D printing. No student-only competitions. Open to individuals, teams or startups.
+    </p>
+    <div class="hero-stats">
+      <div><div class="n" id="stat-total">0</div><div class="l">tracked</div></div>
+      <div><div class="n" id="stat-open">0</div><div class="l">deadline &lt; 30d</div></div>
+      <div><div class="n" id="stat-eu">0</div><div class="l">europe-focused</div></div>
+    </div>
+  </div>
+
+  <div>
+    <div class="scope-wrap">
+      <svg id="scope" viewBox="0 0 400 400" role="img" aria-label="Radar scope plotting tracked challenges by days remaining until deadline">
+        <circle class="scope-ring" cx="200" cy="200" r="180"/>
+        <circle class="scope-ring" cx="200" cy="200" r="130"/>
+        <circle class="scope-ring" cx="200" cy="200" r="80"/>
+        <circle class="scope-ring" cx="200" cy="200" r="30"/>
+        <line class="scope-spoke" x1="200" y1="20" x2="200" y2="380"/>
+        <line class="scope-spoke" x1="20" y1="200" x2="380" y2="200"/>
+        <line class="scope-spoke" x1="61" y1="61" x2="339" y2="339"/>
+        <line class="scope-spoke" x1="339" y1="61" x2="61" y2="339"/>
+        <text class="scope-label" x="204" y="24">90d+</text>
+        <text class="scope-label" x="204" y="74">60d</text>
+        <text class="scope-label" x="204" y="124">30d</text>
+        <text class="scope-label" x="204" y="174">now</text>
+        <g id="scope-sweep">
+          <line class="scope-sweep-line" x1="200" y1="200" x2="200" y2="20" stroke="url(#sweepGrad)" stroke-width="2"/>
+        </g>
+        <defs>
+          <linearGradient id="sweepGrad" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0%" stop-color="#7cffb2" stop-opacity="0"/>
+            <stop offset="100%" stop-color="#7cffb2" stop-opacity="0.9"/>
+          </linearGradient>
+        </defs>
+        <g id="scope-blips"></g>
+      </svg>
+      <div class="scope-center-label">deadline proximity</div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="controls" role="search" aria-label="Filter challenges">
+    <input type="search" id="q" placeholder="Search name, organizer, keyword…" aria-label="Search">
+    <select id="sort" aria-label="Sort by">
+      <option value="deadline">Sort: deadline soonest</option>
+      <option value="new">Sort: newest found</option>
+      <option value="name">Sort: name A–Z</option>
+    </select>
+    <select id="region" aria-label="Region">
+      <option value="">All regions</option>
+    </select>
+    <div class="chip-group" id="topic-chips" aria-label="Topic filters"></div>
+  </div>
+
+  <section class="log">
+    <div class="log-head">
+      <span id="result-count">0 contacts</span>
+      <span>sorted by deadline</span>
+    </div>
+    <div id="list"></div>
+  </section>
+</main>
+
+<footer>
+  <p>
+    Auto-curated from public feeds and Google News RSS, then filtered by keyword heuristics
+    and (when configured) Claude for structured extraction. This is best-effort discovery,
+    not an official registry — always verify eligibility, dates and rewards on the organizer's
+    own page before entering. Excludes student-only competitions where detectable.
+  </p>
+  <p>Source &amp; scan config: <a href="https://github.com/" id="repo-link">this repository</a> · runs daily via GitHub Actions.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
